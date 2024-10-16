@@ -13,8 +13,11 @@ GameObject:
   - component: {fileID: 7422248849624956383}
   - component: {fileID: 7782368269661958853}
   - component: {fileID: 1051546408401559403}
-  - component: {fileID: 1543180476158861185}
-  - component: {fileID: 4943487501900210862}
+  - component: {fileID: 3037743572258098683}
+  - component: {fileID: 4785570270139895996}
+  - component: {fileID: 6108395926054926989}
+  - component: {fileID: 3134983696033929459}
+  - component: {fileID: 3821639248350220952}
   m_Layer: 0
   m_Name: Worm
   m_TagString: Untagged
@@ -175,26 +178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
-  _groundDetecter: {fileID: 7468005728666081403}
---- !u!114 &1543180476158861185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566598406888046373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca74dca7ee25b694cba17a4fa689e21e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _point: {fileID: 0}
-  _radius: 0
-  _maskGround:
-    serializedVersion: 2
-    m_Bits: 0
-  _groundDetecter: {fileID: 7468005728666081403}
---- !u!95 &4943487501900210862
+  _damage: 1
+--- !u!95 &3037743572258098683
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -215,6 +200,63 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4785570270139895996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566598406888046373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8952a8cdc2834814eb9b14d4482ef06e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 1
+  _obstacleChecker: {fileID: 2856619647168773544}
+--- !u!114 &6108395926054926989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566598406888046373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385c7adbdd89cd24eab6542a6c20243d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 1
+  _obstacleChecker: {fileID: 2856619647168773544}
+--- !u!114 &3134983696033929459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566598406888046373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b774e7dda817754eba27243d2c9641e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _obstacleChecker: {fileID: 2856619647168773544}
+--- !u!114 &3821639248350220952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566598406888046373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2965d0894eb33468cb08fcc15e4baf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  _boxSize: {x: 0, y: 0}
 --- !u!1 &983534440306213415
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,8 +266,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7468005728666081403}
+  - component: {fileID: 2856619647168773544}
   m_Layer: 0
-  m_Name: CheckGround
+  m_Name: ObstacleChecker
   m_TagString: Untagged
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -240,9 +283,25 @@ Transform:
   m_GameObject: {fileID: 983534440306213415}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.75, y: 0, z: 0}
+  m_LocalPosition: {x: -0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 605594675631335919}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2856619647168773544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983534440306213415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff5684db9ebde834aae9f8464f8a0f98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maskGround:
+    serializedVersion: 2
+    m_Bits: 64
+  _distance: 1

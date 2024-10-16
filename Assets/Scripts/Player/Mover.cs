@@ -1,24 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(GroundChecker))]
 
-public class Movable : MonoBehaviour
+public class Mover : MonoBehaviour
 {
     private const string Horizontal = nameof(Horizontal);
 
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
 
+    private readonly int _runHash = Animator.StringToHash("Run");
+    private readonly int _jumpHash = Animator.StringToHash("Jump");
+    private readonly int _idleHash = Animator.StringToHash("Idle");
+
     private Rigidbody2D _rigidbody2d;
     private GroundChecker _groundChecker;
     private Animator _animator;
     private float _rotateAngle = 180;
-    private int _runHash = Animator.StringToHash("Run");
-    private int _jumpHash = Animator.StringToHash("Jump");
-    private int _idleHash = Animator.StringToHash("Idle");
     private float _directionX;
 
     private void Awake()

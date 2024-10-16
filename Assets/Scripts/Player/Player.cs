@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class Player : MonoBehaviour
 {
     [SerializeField] private int _lifeCount;
@@ -14,5 +13,10 @@ public class Player : MonoBehaviour
     {
         _lifeCount -= damage;
         Debug.Log(_lifeCount);
+    }
+
+    private void Attack(Worm worm)
+    {
+        worm.TakeDamage(_damage);
     }
 }
