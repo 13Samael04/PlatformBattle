@@ -5,7 +5,7 @@ public class GroundChecker : MonoBehaviour
     [SerializeField] private Transform _point;
     [SerializeField] private float _radius;
     [SerializeField] private LayerMask _maskGround;
-    [SerializeField] Transform _groundDetecter;
+    [SerializeField] private Transform _groundDetecter;
 
     private float _distance = 1;
     private CapsuleCollider2D _collider;

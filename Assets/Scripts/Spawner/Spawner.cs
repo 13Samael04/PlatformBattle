@@ -26,7 +26,7 @@ public class Spawner : MonoBehaviour
         {
             point = GetRandomPoints();
 
-            if (point.IsCoin == false)
+            if (point.ChekCoin == false)
             {
                 point.SpawnCoin();
             }

@@ -7,8 +7,9 @@ public class Coin : MonoBehaviour
 {
     public event Action<Coin> Destroyed;
 
-    public void Delete()
+    public void Diactivate()
     {
-        Destroyed?.Invoke(this);
+        //Destroyed?.Invoke(this);
+        gameObject.SetActive(false);
     }
 }

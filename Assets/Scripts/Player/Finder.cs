@@ -12,14 +12,14 @@ public class Finder : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out Heel heel))
+        if (collision.gameObject.TryGetComponent(out AidKit heel))
         {
             _player.AddLife();
             heel.Delete();
         }
         if (collision.gameObject.TryGetComponent(out Coin coin))
         {
-            coin.Delete();
+            coin.Diactivate();
         }
     }
 }

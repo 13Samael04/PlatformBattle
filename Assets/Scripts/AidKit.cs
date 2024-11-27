@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
 
-public class Heel : MonoBehaviour
+public class AidKit : MonoBehaviour
 {
     public void Delete()
     {

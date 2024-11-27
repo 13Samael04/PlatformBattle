@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 3037743572258098683}
   - component: {fileID: 4785570270139895996}
   - component: {fileID: 6108395926054926989}
-  - component: {fileID: 3134983696033929459}
   - component: {fileID: 3821639248350220952}
   m_Layer: 0
   m_Name: Worm
@@ -177,8 +176,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c234143ebc8e1a54ea25f712d37aa17c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _obstacleChecker: {fileID: 0}
   _speed: 1
   _damage: 1
+  _lifeCount: 1
 --- !u!95 &3037743572258098683
 Animator:
   serializedVersion: 5
@@ -228,19 +229,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 1
   _obstacleChecker: {fileID: 2856619647168773544}
---- !u!114 &3134983696033929459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566598406888046373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b774e7dda817754eba27243d2c9641e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _obstacleChecker: {fileID: 2856619647168773544}
 --- !u!114 &3821639248350220952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,8 +243,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerMask:
     serializedVersion: 2
-    m_Bits: 0
-  _boxSize: {x: 0, y: 0}
+    m_Bits: 8
+  _boxSize: {x: 4, y: 1}
 --- !u!1 &983534440306213415
 GameObject:
   m_ObjectHideFlags: 0

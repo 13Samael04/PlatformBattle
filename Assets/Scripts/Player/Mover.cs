@@ -2,6 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(GroundChecker))]
+[RequireComponent(typeof(PlayerInput))]
 
 public class Mover : MonoBehaviour
 {
@@ -19,12 +20,14 @@ public class Mover : MonoBehaviour
     private Animator _animator;
     private float _rotateAngle = 180;
     private float _directionX;
+    private PlayerInput _playerInput;
 
     private void Awake()
     {
         _rigidbody2d = GetComponent<Rigidbody2D>();
         _groundChecker = GetComponent<GroundChecker>();
         _animator = GetComponent<Animator>();
+        _playerInput = GetComponent<PlayerInput>();
     }
 
     private void Start()
@@ -34,19 +37,22 @@ public class Mover : MonoBehaviour
 
     private void Update()
     {
-        Move(_directionX);
-        Jump();
+        Jump(_playerInput.IsJump);
+    }
+
+    private void FixedUpdate()
+    {
+        Move(_playerInput.DirectionX);
     }
 
     private void Move(float direction)
     {
-        float directionX = Input.GetAxis(Horizontal);
-        Vector2 movement = new Vector2(directionX, 0);
+        Vector2 movement = new Vector2(direction, 0);
 
-        Rotate(directionX);
-        _rigidbody2d.velocity = new Vector2(directionX * _speed, _rigidbody2d.velocity.y);
+        Rotate(direction);
+        _rigidbody2d.velocity = new Vector2(direction * _speed, _rigidbody2d.velocity.y);
 
-        if (directionX != 0 && _groundChecker.IsGround())
+        if (direction != 0 && _groundChecker.IsGround())
         {
             _animator.Play(_runHash);
         }
@@ -68,11 +74,11 @@ public class Mover : MonoBehaviour
         }
     }
 
-    private void Jump()
+    private void Jump(bool isJump)
     {
         if (_groundChecker.IsGround())
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (isJump)
             {
                 _rigidbody2d.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
                 _animator.Play(_jumpHash);

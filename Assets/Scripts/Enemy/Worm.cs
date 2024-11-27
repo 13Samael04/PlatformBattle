@@ -3,8 +3,8 @@ using UnityEngine;
 public class Worm : MonoBehaviour
 {
     [SerializeField] private ObstacleChecker _obstacleChecker;
-    [SerializeField] float _speed;
-    [SerializeField] int _damage;
+    [SerializeField] private float _speed;
+    [SerializeField] private int _damage;
     [SerializeField] private int _lifeCount = 1;
 
     private Animator _animator;
@@ -49,12 +49,17 @@ public class Worm : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _lifeCount -= damage;
-        Debug.Log(_lifeCount);
+        Debug.Log($"у врана жизней {_lifeCount}");
+
+        if ( _lifeCount <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Move()
     {
-        if (_characterDetector.CanFollowPlayer2(out Vector3 targetPosition))
+        if (_characterDetector.CanFollowPlayer(out Vector3 targetPosition))
         {
             _purseState.FollowToPlayer(targetPosition);
             Debug.Log("приследование");

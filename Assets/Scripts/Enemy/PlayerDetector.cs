@@ -7,9 +7,7 @@ public class PlayerDetector : MonoBehaviour
 
     private Vector3 _position;
 
-    public bool CanFollowPlayer() => Physics2D.BoxCast(transform.position, _boxSize, 0f, transform.right, 0f, _playerMask);
-
-    public bool CanFollowPlayer2(out Vector3 targetPosition) 
+    public bool CanFollowPlayer(out Vector3 targetPosition) 
     {
         targetPosition = Vector2.zero;
         RaycastHit2D hit = Physics2D.BoxCast(transform.position, _boxSize, 0f, transform.right, 0f, _playerMask);

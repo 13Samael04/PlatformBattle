@@ -10,7 +10,7 @@ public class Point : MonoBehaviour
 
     private ObjectPool<Coin> _pool;
 
-    public bool IsCoin { get; private set; } = false;
+    public bool ChekCoin { get; private set; } = false;
 
     private void Awake()
     {
@@ -34,13 +34,13 @@ public class Point : MonoBehaviour
         coin.Destroyed += Release;
         coin.transform.position = transform.position;
         coin.gameObject.SetActive(true);
-        IsCoin = true;
+        ChekCoin = true;
     }
 
     private void Release(Coin coin)
     {
         coin.Destroyed -= Release;
         _pool.Release(coin);
-        IsCoin = false;
+        ChekCoin = false;
     }
 }
